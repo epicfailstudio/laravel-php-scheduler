@@ -1,0 +1,11 @@
+PyPDF2
+EbookLib==0.16
+pocketsphinx==0.1.15
+textract
+pypng
+zbar-py
+pillow
+qrtools
+pdf2image
+opencv-python
+opencv-contrib-python
