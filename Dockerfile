@@ -34,8 +34,8 @@ RUN apt-get install -y zbar-tools libzbar-dev
 COPY ./assets/requirements.txt /root/requirements.txt
 RUN pip3 install -r /root/requirements.txt
 
-RUN apt install ocrmypdf
-RUN apt install tesseract-ocr-slk
+RUN apt install -y ocrmypdf
+RUN apt install -y tesseract-ocr-slk
 
 RUN echo 'post_max_size = 512M' >> $PHP_INI_DIR/php.ini
 
