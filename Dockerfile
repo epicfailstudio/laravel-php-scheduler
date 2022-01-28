@@ -39,6 +39,8 @@ RUN apt install -y tesseract-ocr-slk
 
 RUN echo 'post_max_size = 512M' >> $PHP_INI_DIR/php.ini
 
+RUN apt-get install -y zip
+
 # set user as www-data because default user sometimes mess with privileges when multiple machines access to the same resource
 USER www-data
 
