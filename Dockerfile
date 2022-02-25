@@ -1,4 +1,4 @@
-FROM epicfailstudio/laravel-php-backend:7.4php
+FROM epicfailstudio/laravel-php-backend:8.1php
 
 RUN apt-get update
 
