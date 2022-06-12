@@ -36,10 +36,10 @@ RUN pip3 install -r /root/requirements.txt
 
 RUN apt install -y ocrmypdf
 RUN apt install -y tesseract-ocr-slk
+RUN apt install -y zip
 
 RUN echo 'post_max_size = 512M' >> $PHP_INI_DIR/php.ini
-
-RUN apt-get install -y zip
+RUN echo 'memory_limit = 512M' >> $PHP_INI_DIR/php.ini
 
 # set user as www-data because default user sometimes mess with privileges when multiple machines access to the same resource
 USER www-data
