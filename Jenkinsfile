@@ -32,7 +32,7 @@ pipeline {
         }
         stage( "Release" ){
             steps {
-                sh "docker image tag $PACKAGE:$BUILD_NUMBER $REGISTRY:latest"
+//                 sh "docker image tag $PACKAGE:$BUILD_NUMBER $REGISTRY:latest"
                 sh "docker image tag $PACKAGE:$BUILD_NUMBER $REGISTRY:$VERSION"
 
                 sh "docker image push --all-tags $REGISTRY"
