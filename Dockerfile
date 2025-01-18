@@ -1,5 +1,6 @@
-FROM epicfailstudio/laravel-php-backend:8.1php
+FROM epicfailstudio/laravel-php-backend:8.2php
 
+USER root
 RUN apt-get update
 
 COPY ./assets/start.sh /usr/local/bin/start
@@ -10,7 +11,7 @@ RUN apt-get update
 RUN apt-get install -y cron wget dnsutils net-tools libc-bin locales gnupg
 
 # Install python3 and dependencies needed for OCR and document processing
-RUN apt-get install -y python-dev python3-dev libxml2-dev libxslt1-dev antiword poppler-utils zlib1g-dev build-essential libssl-dev libffi-dev libblas-dev libatlas-base-dev
+RUN apt-get install -y python-dev-is-python3 libxml2-dev libxslt1-dev antiword poppler-utils zlib1g-dev build-essential libssl-dev libffi-dev libblas-dev libatlas-base-dev
 RUN apt-get install -y unrtf
 RUN apt-get install -y tesseract-ocr
 RUN apt-get install -y flac
@@ -29,6 +30,9 @@ RUN apt-get install -y python3-tk python3-numpy
 
 # Install ZBar
 RUN apt-get install -y zbar-tools libzbar-dev
+
+# because F*CK security!
+RUN rm /usr/lib/python3.11/EXTERNALLY-MANAGED
 
 # Copy and Install python PIP packages
 COPY ./assets/requirements.txt /root/requirements.txt

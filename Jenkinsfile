@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
         PACKAGE = 'laravel-php-scheduler'
-        VERSION = '8.1php'
+        VERSION = '8.2php'
         REGISTRY = "epicfailstudio/laravel-php-scheduler"
     }
     stages {
@@ -19,21 +19,22 @@ pipeline {
                 checkout scm
             }
         }
-        stage( "Build" ){
+        stage( "Buildx" ){
             steps {
                 echo "Build Machines";
 
-                sh "docker build --no-cache --tag $PACKAGE:$BUILD_NUMBER ./"
+                sh "docker buildx build --push --no-cache --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --tag $REGISTRY:$VERSION --tag $REGISTRY:latest  --builder container ./"
             }
         }
-        stage( "Release" ){
-            steps {
-                sh "docker image tag $PACKAGE:$BUILD_NUMBER $REGISTRY:latest"
-                sh "docker image tag $PACKAGE:$BUILD_NUMBER $REGISTRY:$VERSION"
-
-                sh "docker image push --all-tags $REGISTRY"
-            }
-        }
+//         stage( "Release" ){
+//             steps {
+//                 sh "docker image tag $PACKAGE:$BUILD_NUMBER $REGISTRY:latest"
+//                 sh "docker image tag $PACKAGE:$BUILD_NUMBER $REGISTRY:$VERSION"
+//
+// Temporary disabled
+//                 sh "docker image push --all-tags $REGISTRY"
+//             }
+//         }
         stage( "Cleanup" ){
             steps {
                 sh "docker rmi $REGISTRY:latest"
