@@ -26,22 +26,6 @@ pipeline {
                 sh "docker buildx build --push --no-cache --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --tag $REGISTRY:$VERSION --tag $REGISTRY:latest  --builder container ./"
             }
         }
-//         stage( "Release" ){
-//             steps {
-//                 sh "docker image tag $PACKAGE:$BUILD_NUMBER $REGISTRY:latest"
-//                 sh "docker image tag $PACKAGE:$BUILD_NUMBER $REGISTRY:$VERSION"
-//
-// Temporary disabled
-//                 sh "docker image push --all-tags $REGISTRY"
-//             }
-//         }
-        stage( "Cleanup" ){
-            steps {
-                sh "docker rmi $REGISTRY:latest"
-                sh "docker rmi $REGISTRY:$VERSION"
-                sh "docker rmi laravel-php-scheduler:$BUILD_NUMBER"
-            }
-        }
     }
     post{
         failure {
