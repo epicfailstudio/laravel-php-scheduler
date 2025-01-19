@@ -23,7 +23,7 @@ pipeline {
             steps {
                 echo "Build Machines";
 
-                sh "docker buildx build --push --no-cache --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --tag $REGISTRY:$VERSION --tag $REGISTRY:latest  --builder container ./"
+                sh "docker buildx build --push --no-cache --platform linux/arm64/v8,linux/amd64 --tag $REGISTRY:$VERSION --tag $REGISTRY:latest  --builder container ./"
             }
         }
     }
