@@ -6,7 +6,7 @@ This is a docker PHP package used for the production environments with artisan s
 Image has preinstalled python3 and packages for working with files in background such as `tesseract-ocr`, `zbar` or `ffmpeg` 
 
 ## Core image
-Based on `epicfailstudio/laravel-php-backend:8.1php` docker image
+Based on `epicfailstudio/laravel-php-backend:8.3php` docker image
 
 ### python requirements:
 ```ini

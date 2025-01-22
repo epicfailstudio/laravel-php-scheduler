@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
         PACKAGE = 'laravel-php-scheduler'
-        VERSION = '8.2php'
+        VERSION = '8.3php'
         REGISTRY = "epicfailstudio/laravel-php-scheduler"
     }
     stages {
